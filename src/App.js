@@ -12,6 +12,8 @@ function App() {
   const [hasErrors, setHasErrors]= useState(false);
   const [jiraData, setJiraData] = useState({});
   //ebbaBYC2er515AQoSAwwF1BF
+
+  
   
 
   async function fetchData() {
@@ -22,32 +24,46 @@ function App() {
     // .catch(err => setHasErrors(err));
     
     //http://jiraproxy.us-e2.cloudhub.io/agile/1.0/board/91/sprint
+    //http://jiraproxy2.us-e2.cloudhub.io/agile/1.0/board/91/sprint
     //https://vgregionit.atlassian.net/rest/agile/1.0/board/91/sprint
-      fetch('http://jiraproxy.us-e2.cloudhub.io/agile/1.0/board/91/sprint', {
+    //https://cors-anywhere.herokuapp.com/https://vgregionit.atlassian.net/rest/agile/1.0/board/91/sprint WORKS (not secure)
+      fetch('http://127.0.0.1:8080/https://vgregionit.atlassian.net/rest/agile/1.0/board/91/sprint', {
         method: 'GET',
-        mode: 'cors',
+        //mode: 'cors',
         //Host: 'https://vgregionit.atlassian.net',
         //Origin: 'http://localhost:3000/',
-      // cache: 'no-cache',
-      // credentials: 'include',
+        // cache: 'no-cache',
+        // credentials: 'include',
         headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": "Basic dmluY2VudC5saWRlYm8ua2plbGxtYW5AZ21haWwuY29tOmViYmFCWUMyZXI1MTVBUW9TQXd3RjFCRg==",
+            //"Origin":"localhost/3000",
+            //"Host":"https://vgregionit.atlassian.net",
+            //"Content-Type": "application/json",
+            //"Accept": "application/json",
+            // "Access-Control-Allow-Origin":"*",
+            "Authorization": "Basic ",
                     },
       })
       .then(response => response.json())
-      .then(console.log);
+      .then(data => setJiraData(data))
+      // .then(console.log);
 };
 
+// console.log(jiraData);
+
+
 useEffect(()=>{
-    fetchData();
+  fetchData();
 }, []);
 
 
   return (
     <div className="App">
       <Header></Header>
+
+      {
+        console.log(jiraData.values)
+        
+        }
       {/* mapping jira data into components */}
 
       {/* {jiraData.map(releaseCard => (
@@ -62,9 +78,10 @@ useEffect(()=>{
         </ReleaseCard>
       ))}; */}
 
+
       {/* End, below is an example */}
 
-      <ReleaseCard version="1.1" release="2019 Q4" >
+      <ReleaseCard version="" release="2019 Q4" >
         {/* Here be printed out loop(array) */}
         <Category categoryTitle="Security" amountStatus="2 in development" entryAmount="Entries: 2" >
           <Entry

@@ -1,0 +1,42 @@
+{
+    "maxResults": 50,
+    "startAt": 0,
+    "isLast": true,
+    "values": [
+    {
+        "id": 79,
+        "self": "https://vgregionit.atlassian.net/rest/agile/1.0/sprint/79",
+        "state": "closed",
+        "name": "1st Release",
+        "startDate": "2019-08-19T18:03:00.000Z",
+        "endDate": "2019-09-30T18:03:00.000Z",
+        "completeDate": "2019-10-28T10:22:37.494Z",
+        "originBoardId": 91,
+        "goal": ""
+    },
+    {
+        "id": 81,
+        "self": "https://vgregionit.atlassian.net/rest/agile/1.0/sprint/81",
+        "state": "future",
+        "name": "Current Sprint",
+        "originBoardId": 91,
+        "goal": ""
+    },
+    {
+        "id": 82,
+        "self": "https://vgregionit.atlassian.net/rest/agile/1.0/sprint/82",
+        "state": "future",
+        "name": "Release Candidate 1",
+        "originBoardId": 91,
+        "goal": ""
+    },
+    {
+        "id": 86,
+        "self": "https://vgregionit.atlassian.net/rest/agile/1.0/sprint/86",
+        "state": "future",
+        "name": "Release Candidate 2",
+        "originBoardId": 91,
+        "goal": ""
+    }
+    ]
+}
