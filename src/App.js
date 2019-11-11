@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
 
-  const [hasErrors, setHasErrors]= useState(false);
+  //const [hasErrors, setHasErrors]= useState(false);
   const [jiraData, setJiraData] = useState({});
   //ebbaBYC2er515AQoSAwwF1BF
 
@@ -48,22 +48,23 @@ function App() {
       // .then(console.log);
 };
 
-// console.log(jiraData);
-
-
 useEffect(()=>{
   fetchData();
 }, []);
+
+//Push API data into array to be able to use Map
+console.log(jiraData);
+let jiraDataArray = [];
+Object.keys(jiraData).forEach(function(key){
+  jiraDataArray.push(jiraData[key]);
+});
+
+console.log(jiraDataArray);
 
 
   return (
     <div className="App">
       <Header></Header>
-
-      {
-        console.log(jiraData.values)
-        
-        }
       {/* mapping jira data into components */}
 
       {/* {jiraData.map(releaseCard => (
