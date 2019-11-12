@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import styled from 'styled-components';
+import styled from 'styled-components';
 //import Container from '../components/Container';
 import Header from '../src/components/Header';
 import ReleaseCard from '../src/components/ReleaseCard';
@@ -7,10 +7,22 @@ import Category from '../src/components/Category';
 import Entry from '../src/components/Entry';
 import './App.css';
 
+const StyledApp = styled.div`
+
+.cards-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  // flex-flow: row wrap;
+}
+
+` 
+
 function App() {
 
   //const [hasErrors, setHasErrors]= useState(false);
-  const [jiraData, setJiraData] = useState({});
+  const [jiraData, setJiraData] = useState([]);
   //ebbaBYC2er515AQoSAwwF1BF
 
   
@@ -44,7 +56,7 @@ function App() {
                     },
       })
       .then(response => response.json())
-      .then(data => setJiraData(data))
+      .then(data => setJiraData(data.values))
       // .then(console.log);
 };
 
@@ -53,56 +65,70 @@ useEffect(()=>{
 }, []);
 
 //Push API data into array to be able to use Map
-console.log(jiraData);
-let jiraDataArray = [];
-Object.keys(jiraData).forEach(function(key){
-  jiraDataArray.push(jiraData[key]);
-});
+// console.log(jiraData);
+// let jiraDataArray = [];
+// Object.keys(jiraData).forEach(function(key){
+//   jiraDataArray.push(jiraData.values[key]);
+// });
+// jiraDataArray.push(jiraData);
 
-console.log(jiraDataArray);
+// console.log(jiraData.values);
+
+// if(!jiraData.value === )
+// jiraDataArray.map(item => {
+//   return console.log(item);
+// })
+// console.log(jiraDataArray.values)
+//console.log(jiraData.values[0] && jiraData.values[0].name );
+//console.log(products[0] && products[0].images[0].src);
+
+console.log(jiraData);
 
 
   return (
-    <div className="App">
-      <Header></Header>
-      {/* mapping jira data into components */}
-
-      {/* {jiraData.map(releaseCard => (
-        <ReleaseCard>
-          {jiraData.map(category =>(
-            <Category>
-              {jiraData.map(entry => (
-                <Entry></Entry>
-              ))}
-            </Category>
-            ))};                
-        </ReleaseCard>
-      ))}; */}
-
-
-      {/* End, below is an example */}
-
-      <ReleaseCard version="" release="2019 Q4" >
-        {/* Here be printed out loop(array) */}
-        <Category categoryTitle="Security" amountStatus="2 in development" entryAmount="Entries: 2" >
-          <Entry
-            entryHeader="Add firewalls"
-            tasksCompleted="2/7 Tasks completed"
-            status="In Development"
-            entrySummary="Setting up and applying firewalls to all VGR-IT servers."
-          />
-          <Entry
-            entryHeader="Program Security measures"
-            tasksCompleted="5/10 Tasks completed"
-            status="In Development"
-            entrySummary="Setting up and applying firewalls to all VGR-IT servers."
-          />
-          </Category>
-          <Category categoryTitle="Servers" amountStatus="2 in development" entryAmount="Entries: 2" >
-          </Category>
+    <StyledApp>
+      <div className="App">
+        <Header></Header>
+        {/* mapping jira data into components */}
+        <div className="cards-container">
+        {jiraData.map(releaseCard => (
+          <ReleaseCard key={releaseCard.id} version={releaseCard.name} release={releaseCard.state}>
+            {/* {jiraData.map(category =>(
+              <Category>
+                {jiraData.map(entry => (
+                  <Entry></Entry>
+                ))}
+              </Category>
+              ))};                 */}
           </ReleaseCard>
-          <ReleaseCard version="1.2" release="2020 Q1" />
-    </div>
+        ))}
+        </div>
+
+
+        {/* End, below is an example */}
+
+        {/* <ReleaseCard version="1.1" release="2019 Q4" > */}
+          {/* Here be printed out loop(array) */}
+          {/* <Category categoryTitle="Security" amountStatus="2 in development" entryAmount="Entries: 2" >
+            <Entry
+              entryHeader="Add firewalls"
+              tasksCompleted="2/7 Tasks completed"
+              status="In Development"
+              entrySummary="Setting up and applying firewalls to all VGR-IT servers."
+            />
+            <Entry
+              entryHeader="Program Security measures"
+              tasksCompleted="5/10 Tasks completed"
+              status="In Development"
+              entrySummary="Setting up and applying firewalls to all VGR-IT servers."
+            />
+            </Category>
+            <Category categoryTitle="Servers" amountStatus="2 in development" entryAmount="Entries: 2" >
+            </Category>
+            </ReleaseCard>
+            <ReleaseCard version="1.2" release="2020 Q1" /> */}
+      </div>
+    </StyledApp>
   );
 }
 

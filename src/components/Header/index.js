@@ -69,7 +69,7 @@ const Header = ({ logo }) => {
             <div className="header">
                 <button className="selected-button" type="button">VGR-INTEGRATION</button>
                 <button className="header-item" type="button">VGR-DRIFT</button>
-                <button className="header-item" type="button">VGR-UNDERHÅLLNING</button>
+                <button className="header-item" type="button">VGR-SÄKERHET</button>
                 <button className="header-item-add" type="button"><span className="add-button">+</span></button>
             </div>
         </StyledHeader>
